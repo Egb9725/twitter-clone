@@ -6,7 +6,7 @@
 | The routes file is used for defining the HTTP routes.
 |
 */
-import router from '@adonisjs/core/services/router'
+import Route from '@adonisjs/core/services/router'
 import type { HttpContext } from '@adonisjs/core/http'
 
 const tweets = [
@@ -79,23 +79,14 @@ const tweets = [
   },
 ]
 
-router.get('/', async (ctx: HttpContext) => {
+Route.get('/', async (ctx: HttpContext) => {
   return ctx.response.redirect().toRoute('home')
 })
 
-router
-  .get('/home', async ({ view }) => {
-    return view.render('pages/home', { tweets })
-  })
-  .as('home')
+Route.get('/home', async ({ view }) => {
+  return view.render('pages/home', { tweets })
+}).as('home')
 
-router
-  .get('/login', async ({ view }) => {
-    return view.render('pages/login')
-  })
-  .as('login')
-Route.post('/tweets', 'TweetsController.store').middleware('auth')
-Route.get('/tweets', 'TweetsController.index').middleware('auth')
-
-Route.post('/register', 'AuthController.register')
-Route.post('/login', 'AuthController.login')
+Route.get('/login', async ({ view }) => {
+  return view.render('pages/login')
+}).as('login')

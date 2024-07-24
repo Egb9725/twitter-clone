@@ -9,8 +9,10 @@ export default class AuthController {
     const email = request.input('email')
     const password = request.input('password')
     const username = request.input('username')
+
     const user = await User.create({ email, password, username })
-    await auth.login(user)
+    await auth.use('web').login(user) // Utilisation de 'web' guard
+
     return user
   }
 
@@ -24,7 +26,8 @@ export default class AuthController {
       return 'Invalid credentials'
     }
 
-    await auth.login(user)
+    await auth.use('web').login(user) // Utilisation de 'web' guard
+
     return user
   }
 }

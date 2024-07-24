@@ -5,6 +5,12 @@ export default class Tweet extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+  declare user_id: number
+
+  @column()
+  declare content: string | null
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
