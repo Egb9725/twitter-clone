@@ -80,7 +80,7 @@ const tweets = [
 ]
 
 Route.get('/', async (ctx: HttpContext) => {
-  return ctx.response.redirect().toRoute('home')
+  return ctx.response.redirect().toRoute('login')
 })
 
 Route.get('/home', async ({ view }) => {
