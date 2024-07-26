@@ -7,10 +7,16 @@
 }
 
 body {
+ 
   background-color: black;
   color: white;
   margin: 0 auto;
   max-width: 1800px;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 #root {
@@ -222,14 +228,12 @@ svg {
   gap: 20px;
 }
 
+/* sidebar */
 .sidebar {
  background-color: #000;
   color: #fff;
   width: 200px;
   height: 100%;
-  
-  
-  
   align-items: flex-start;
   padding: 20px;
   box-sizing: border-box;
@@ -238,11 +242,11 @@ svg {
   left: 0;
   top: 0;
   display: flex;
-  flex: 0 0 250px; /* Fixed width for sidebar */
+  flex: 0 0 250px; 
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #000; /* Dark background for sidebar */
+  background-color: #000;
 }
 
 .sidebar-item {
@@ -271,6 +275,128 @@ svg {
 .sidebar-button:hover {
   background-color: #0C84D1;
 }
+
+/* login */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+.logo img {
+  max-width: 200px;
+}
+
+.content {
+  max-width: 400px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+#svg-x {
+  width: 20rem;
+  height: auto;
+}
+button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.google-btn {
+  background-color: #fff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3rem;
+}
+
+.google-btn img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.apple-btn {
+  background-color: #fff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3rem;
+}
+
+.apple-btn img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.divider {
+  text-align: center;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.signup-btn {
+  background-color: #1d9bf0;
+  color: #fff;
+  border-radius: 3rem;
+}
+
+.terms {
+  font-size: 0.8rem;
+  color: #ccc;
+  margin-top: 1rem;
+}
+
+.terms a {
+  color: #1d9bf0;
+  text-decoration: none;
+}
+
+.login {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.login a {
+  color: #1d9bf0;
+  text-decoration: none;
+}
+
+
+/* responsive design */
 
 @media (max-width: 1024px) {
   .sidebar {

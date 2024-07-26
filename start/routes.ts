@@ -79,7 +79,6 @@ const tweets = [
     verified: true,
   },
 ]
-
 Route.get('/', async (ctx: HttpContext) => {
   return ctx.response.redirect().toRoute('login')
 })
@@ -87,11 +86,16 @@ Route.get('/', async (ctx: HttpContext) => {
 Route.get('/home', async ({ view }) => {
   return view.render('pages/home', { tweets })
 }).as('home')
+Route.get('/register', async ({ view }) => {
+  return view.render('pages/register')
+}).as('register')
+
+Route.post('/register', [AuthController, 'register'])
 
 Route.get('/login', async ({ view }) => {
   return view.render('pages/login')
 }).as('login')
 
-Route.post('/register', [AuthController, 'register'])
 Route.post('/login', [AuthController, 'login'])
+
 Route.post('/logout', [AuthController, 'logout'])
