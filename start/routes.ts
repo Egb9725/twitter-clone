@@ -8,6 +8,7 @@
 */
 import Route from '@adonisjs/core/services/router'
 import type { HttpContext } from '@adonisjs/core/http'
+const AuthController = () => import('#controllers/auth_controller')
 
 const tweets = [
   {
@@ -90,3 +91,7 @@ Route.get('/home', async ({ view }) => {
 Route.get('/login', async ({ view }) => {
   return view.render('pages/login')
 }).as('login')
+
+Route.post('/register', [AuthController, 'register'])
+Route.post('/login', [AuthController, 'login'])
+Route.post('/logout', [AuthController, 'logout'])
