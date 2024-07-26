@@ -38,3 +38,17 @@ export const http = defineConfig({
     sameSite: 'lax',
   },
 })
+const providers = [
+  '@adonisjs/core',
+  '@adonisjs/lucid',
+  '@adonisjs/ally',
+  // Other providers
+]
+
+const aceProviders = []
+
+const aliases = {}
+
+const commands = []
+
+export { providers, aceProviders, aliases, commands }

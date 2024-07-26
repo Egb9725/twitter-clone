@@ -1,15 +1,25 @@
 @layouts.app('title', 'Home')
- <div class="timeline">
-   @component('components/header')
-   @endcomponent
-   @component('components/tweetEditor')
-   @endcomponent
-
-   @each(tweet in tweets)
-      @component('components/tweet', {...tweet})
-      @endcomponent
-   @end
-
-
- </div>
+    <div class="timeline">
+      <header>
+        @component('components/sidebar')
+        @endcomponent
+      </header>
+      <header>
+        @component('components/header')
+        @endcomponent
+      </header>
+      <div class="timeline">
+        <div>
+          @component('components/tweetEditor')
+          @endcomponent
+          
+          @each(tweet in tweets)
+              @component('components/tweet', {...tweet})
+              @endcomponent
+          @end
+        </div>
+  
+      </div>
+      
+    </div>
 @end
