@@ -8,7 +8,7 @@ export default class Likes extends BaseSchema {
       table.increments('id')
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
       table.integer('tweet_id').unsigned().references('id').inTable('tweets').onDelete('CASCADE')
-      table.timestamps(true)
+      table.timestamp('created_at', { useTz: true }).defaultTo(this.now())
     })
   }
 

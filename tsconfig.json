@@ -3,5 +3,9 @@
   "compilerOptions": {
     "rootDir": "./",
     "outDir": "./build",
+    "paths": {
+      "@adonisjs/core/*": ["./node_modules/@adonisjs/core/build/src/*"],
+      "@adonisjs/repl/*": ["./node_modules/@adonisjs/repl/build/src/*"]
+    }
   },
 }

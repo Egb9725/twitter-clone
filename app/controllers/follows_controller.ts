@@ -7,4 +7,14 @@ export default class FollowsController {
     const follow = await Follow.create({ followerId: auth.user!.id, followingId })
     return follow
   }
+
+  async destroy({ params, auth }: HttpContext) {
+    const follow = await Follow.query()
+      .where('follower_id', auth.user!.id)
+      .andWhere('following_id', params.id)
+      .firstOrFail()
+
+    await follow.delete()
+    return { message: 'Unfollowed successfully' }
+  }
 }
