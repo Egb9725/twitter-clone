@@ -8,6 +8,7 @@
 // */
 import Route from '@adonisjs/core/services/router'
 import type { HttpContext } from '@adonisjs/core/http'
+import User from '#models/user'
 const AuthController = () => import('#controllers/auth_controller')
 const TweetsController = () => import('#controllers/tweets_controller')
 const FollowsController = () => import('#controllers/follows_controller')
@@ -88,8 +89,11 @@ Route.get('/', async (ctx: HttpContext) => {
   return ctx.response.redirect().toRoute('login')
 })
 
-Route.get('/home', async ({ view }) => {
-  return view.render('pages/home', { tweets })
+Route.get('/home', async ({ view, auth }) => {
+  // Fetch user information if needed
+  const user = auth.user // Adjust according to your auth setup
+
+  return view.render('pages/home', { tweets, user })
 }).as('home')
 
 Route.get('/register', async ({ view }) => {

@@ -282,7 +282,7 @@ svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 900px;
+  
   width: 100%;
 }
 
@@ -315,7 +315,11 @@ h2 {
   margin-bottom: 1rem;
 }
 #svg-x {
-  width: 20rem;
+  width: 19rem;
+  height: auto;
+}
+#svg-y {
+  width: 10rem;
   height: auto;
 }
 button {
@@ -420,7 +424,6 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 3rem;
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -435,7 +438,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 3rem;
+  width: 5rem;
+  border-radius: 1rem;
 }
 
 /* responsive design */
@@ -450,8 +454,18 @@ button {
   }
 }
 
+.containerRegister{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 @media (max-width: 768px) {
   .container {
+    flex-direction: column;
+  }
+
+  .containerRegister {
     flex-direction: column;
   }
 

@@ -27,7 +27,7 @@ export default class AuthController {
       await user.save()
 
       await auth.use('web').login(user)
-      return response.json({ message: 'User registered and logged in' })
+      return response.redirect('/home') // Rediriger vers la page d'accueil après inscription
     } catch (error) {
       return response.status(500).json({ message: 'Internal Server Error' })
     }
@@ -51,7 +51,7 @@ export default class AuthController {
       }
 
       await auth.use('web').login(user)
-      return response.redirect('/tweets')
+      return response.redirect('/home') // Rediriger vers la page d'accueil après connexion
     } catch (error) {
       session.flash('notification', 'An error occurred during login')
       return response.redirect().back()

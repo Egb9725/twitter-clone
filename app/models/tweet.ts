@@ -9,7 +9,16 @@ export default class Tweet extends BaseModel {
   declare user_id: number
 
   @column()
-  declare content: string | null
+  declare content: string
+
+  @column()
+  declare avatar_url: string | null
+
+  @column()
+  declare retweets: number
+
+  @column()
+  declare likes: number
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
