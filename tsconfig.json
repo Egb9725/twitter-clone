@@ -4,8 +4,14 @@
     "rootDir": "./",
     "outDir": "./build",
     "paths": {
+      "#start/*": ["./start/*"],
       "@adonisjs/core/*": ["./node_modules/@adonisjs/core/build/src/*"],
       "@adonisjs/repl/*": ["./node_modules/@adonisjs/repl/build/src/*"]
-    }
-  },
+    },
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "isolatedModules": true
+  }
 }
