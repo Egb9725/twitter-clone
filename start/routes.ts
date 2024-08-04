@@ -1,4 +1,5 @@
-// /*
+// start/routes.ts
+
 // |--------------------------------------------------------------------------
 // | Routes file
 // |--------------------------------------------------------------------------
@@ -8,7 +9,7 @@
 // */
 import Route from '@adonisjs/core/services/router'
 import type { HttpContext } from '@adonisjs/core/http'
-import User from '#models/user'
+
 const AuthController = () => import('#controllers/auth_controller')
 const TweetsController = () => import('#controllers/tweets_controller')
 const FollowsController = () => import('#controllers/follows_controller')
