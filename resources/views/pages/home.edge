@@ -3,8 +3,7 @@
       <header>
         @component('components/sidebar')
         @endcomponent
-      </header>
-      <header>
+    
         @component('components/header')
         @endcomponent
       </header>
@@ -16,7 +15,7 @@
           @each(tweet in tweets)
               @component('components/tweet', {...tweet})
               @endcomponent
-          @end
+          @end 
         </div>
   
       </div>

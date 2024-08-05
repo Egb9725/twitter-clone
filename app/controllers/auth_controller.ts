@@ -27,7 +27,7 @@ export default class AuthController {
       await user.save()
 
       await auth.use('web').login(user)
-      return response.redirect('/home') // Rediriger vers la page d'accueil après inscription
+      return response.redirect('pages/home') // Rediriger vers la page d'accueil après inscription
     } catch (error) {
       return response.status(500).json({ message: 'Internal Server Error' })
     }
@@ -61,7 +61,7 @@ export default class AuthController {
   async logout({ auth, response }: HttpContext) {
     try {
       await auth.use('web').logout()
-      return response.json({ message: 'User logged out' })
+      return response.redirect('/login')
     } catch (error) {
       return response.status(500).json({ message: 'Internal Server Error' })
     }

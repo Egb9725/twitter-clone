@@ -1,12 +1,12 @@
-// start/routes.ts
+// // start/routes.ts
 
-// |--------------------------------------------------------------------------
-// | Routes file
-// |--------------------------------------------------------------------------
-// |
-// | The routes file is used for defining the HTTP routes.
-// |
-// */
+// // |--------------------------------------------------------------------------
+// // | Routes file
+// // |--------------------------------------------------------------------------
+// // |
+// // | The routes file is used for defining the HTTP routes.
+// // |
+// // */
 import Route from '@adonisjs/core/services/router'
 import type { HttpContext } from '@adonisjs/core/http'
 
@@ -91,9 +91,7 @@ Route.get('/', async (ctx: HttpContext) => {
 })
 
 Route.get('/home', async ({ view, auth }) => {
-  // Fetch user information if needed
-  const user = auth.user // Adjust according to your auth setup
-
+  const user = auth.user
   return view.render('pages/home', { tweets, user })
 }).as('home')
 
@@ -116,10 +114,8 @@ Route.group(() => {
   Route.post('/tweets', [TweetsController, 'store']).as('TweetsController.store')
 }).as('auth')
 
-// Routes for FollowsController
 Route.post('/follow', [FollowsController, 'store']).as('FollowsController.create')
 Route.delete('/unfollow/:id', [FollowsController, 'destroy']).as('FollowsController.destroy')
 
-// Routes for LikesController
 Route.post('/like', [LikesController, 'store']).as('LikesController.create')
 Route.delete('/unlike/:id', [LikesController, 'destroy']).as('LikesController.destroy')
