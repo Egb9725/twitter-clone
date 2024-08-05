@@ -10,10 +10,13 @@
 import Route from '@adonisjs/core/services/router'
 import type { HttpContext } from '@adonisjs/core/http'
 
+// Importation dynamique des contrôleurs
 const AuthController = () => import('#controllers/auth_controller')
 const TweetsController = () => import('#controllers/tweets_controller')
 const FollowsController = () => import('#controllers/follows_controller')
 const LikesController = () => import('#controllers/likes_controller')
+
+// Données fictives pour les tweets (à remplacer par des données dynamiques)
 
 const tweets = [
   // ... vos tweets ici ...
@@ -86,15 +89,14 @@ const tweets = [
   },
 ]
 
-Route.get('/', async (ctx: HttpContext) => {
-  return ctx.response.redirect().toRoute('login')
+// Routes publiques
+Route.get('/', async ({ response }: HttpContext) => {
+  return response.redirect().toRoute('login')
 })
-
 Route.get('/home', async ({ view, auth }) => {
   const user = auth.user
-  return view.render('pages/home', { tweets, user })
+  return view.render('/home', { tweets, user })
 }).as('home')
-
 Route.get('/register', async ({ view }) => {
   return view.render('pages/register')
 }).as('register')
@@ -106,16 +108,15 @@ Route.get('/login', async ({ view }) => {
 }).as('login')
 
 Route.post('/login', [AuthController, 'login'])
-
 Route.post('/logout', [AuthController, 'logout'])
-
+// Routes protégées
 Route.group(() => {
-  Route.get('/tweets', [TweetsController, 'index']).as('TweetsController.index')
-  Route.post('/tweets', [TweetsController, 'store']).as('TweetsController.store')
+  Route.get('/tweets/index', [TweetsController, 'index']).as('TweetsController.index')
+  Route.post('/tweets/store', [TweetsController, 'store']).as('TweetsController.store')
+
+  Route.post('/follow/store', [FollowsController, 'store']).as('FollowsController.create')
+  Route.delete('/unfollow/:id', [FollowsController, 'destroy']).as('FollowsController.destroy')
+
+  Route.post('/like/store', [LikesController, 'store']).as('LikesController.create')
+  Route.delete('/unlike/:id', [LikesController, 'destroy']).as('LikesController.destroy')
 }).as('auth')
-
-Route.post('/follow', [FollowsController, 'store']).as('FollowsController.create')
-Route.delete('/unfollow/:id', [FollowsController, 'destroy']).as('FollowsController.destroy')
-
-Route.post('/like', [LikesController, 'store']).as('LikesController.create')
-Route.delete('/unlike/:id', [LikesController, 'destroy']).as('LikesController.destroy')

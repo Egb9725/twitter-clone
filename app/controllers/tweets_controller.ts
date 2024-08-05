@@ -13,7 +13,7 @@ export default class TweetsController {
       const tweet = await Tweet.create({
         content,
         user_id: auth.user.id,
-        avatar_url: auth.user.avatar_url,
+        avatar_url: auth.user.avatar_url || null, // Assurez-vous que l'avatar_url est nullable
         retweets: 0,
         likes: 0,
       })
@@ -27,7 +27,7 @@ export default class TweetsController {
 
   async index({ request, view, auth }: HttpContext) {
     if (!auth.user) {
-      return view.render('tweets.index', { tweets: [], user: null })
+      return view.render('tweets.index', { tweets: [], user: null, error: null })
     }
 
     const page = request.input('page', 1)
@@ -35,7 +35,7 @@ export default class TweetsController {
 
     try {
       const tweets = await Tweet.query().preload('user').paginate(page, limit)
-      return view.render('tweets.index', { tweets, user: auth.user })
+      return view.render('tweets.index', { tweets: tweets.toJSON(), user: auth.user })
     } catch (error) {
       console.error('Error fetching tweets:', error)
       return view.render('tweets.index', {
