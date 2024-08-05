@@ -5,16 +5,15 @@ export default class Tweets extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id') // Identifiant unique pour chaque tweet
-      table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE') // Clé étrangère vers le modèle User
-      table.text('content').notNullable() // Contenu du tweet
-      table.string('avatar_url').nullable() // URL de l'image jointe au tweet (optionnel)
-      table.integer('retweets').defaultTo(0) // Nombre de retweets
-      table.integer('likes').defaultTo(0) // Nombre de likes
-      table.timestamps(true) // Champs created_at et updated_at
+      table.increments('id')
+      table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE') // En cas de suppression de l'utilisateur, supprimez également ses tweets
+      table.text('content').notNullable()
+      table.string('avatar_url').nullable()
+      table.integer('retweets').defaultTo(0)
+      table.integer('likes').defaultTo(0)
+      table.timestamps(true, true)
     })
   }
-
   async down() {
     this.schema.dropTable(this.tableName)
   }

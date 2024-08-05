@@ -16,3 +16,14 @@ window.addEventListener('click', (event) => {
     popup.style.display = 'none'
   }
 })
+
+// basculer avec les onglets
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.page-tab')
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach((t) => t.classList.remove('page-tab-active'))
+      tab.classList.add('page-tab-active')
+    })
+  })
+})

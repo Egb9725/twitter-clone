@@ -14,6 +14,8 @@ export default class User extends BaseModel {
 
   @column({ serializeAs: null })
   declare password: string
+  @column()
+  declare avatar_url: string | null
 
   @column()
   declare rememberMeToken?: string
